@@ -10,7 +10,12 @@ const getItems = async (req,res) =>{
 const getItem = (req,res) =>{
 };
 /*CREAR REGISTROS*/
-const createItem = (req,res) =>{};
+const createItem = async (req,res) =>{
+    const body = req.body
+    console.log(body)
+    const data = await tracksModel.create(body)
+    res.send({data})
+};
 /*ACTUALIZAR REGISTROS*/
 const updateItem = (req,res) =>{};
 /*ELIMINAR REGISTROS*/
