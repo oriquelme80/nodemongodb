@@ -5,15 +5,12 @@ const {validatorLogin,validatorRegister} = require("../validators/auth")
 const {encrypt,compare} = require("../utils/handlePassword")
 const {userModel} = require("../models");
 
+const {tokenSing} =require("../utils/handleJwt")
+
+const {LoginCtrl} =require("../controllers/auth")
+
 /*login*/ 
-router.post("/register",validatorRegister,async (req,res)=>{
-    req=matchedData(req);
-    const password = await encrypt(req.password)
-    const body = {...req,password}
-    const data = await userModel.create(body)
-    data.set("password",undefined,{strict: false})
-    res.send({data});
-});
+router.post("/register",validatorRegister,LoginCtrl);
 
 /*register*/
 router.post("/auth");
