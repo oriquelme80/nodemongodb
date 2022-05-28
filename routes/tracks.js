@@ -3,10 +3,11 @@ const router = express.Router();
 const customHeader = require("../middleware/customHeader");
 const { validatorCreateItem, validatorGetItem } = require("../validators/tracks");
 const { getItems, getItem, createItem, updateItem,deleteItem } = require("../controllers/tracks");
+const { authMiddleware } = require("../middleware/session");
 
 
 /*Obtener items*/
-router.get("/", getItems);
+router.get("/", authMiddleware,getItems);
 
 /*Obtener items*/
 router.get("/:id", validatorGetItem, getItem);
