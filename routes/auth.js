@@ -7,12 +7,12 @@ const {userModel} = require("../models");
 
 const {tokenSing} =require("../utils/handleJwt")
 
-const {LoginCtrl} =require("../controllers/auth")
+const {RegisterCtrl,LoginCtrl} =require("../controllers/auth")
 
-/*login*/ 
-router.post("/register",validatorRegister,LoginCtrl);
+/*register*/ 
+router.post("/register",validatorRegister,RegisterCtrl);
 
-/*register*/
-router.post("/auth");
+/*login*/
+router.post("/login",validatorLogin,LoginCtrl);
 
 module.exports = router;
