@@ -15,11 +15,13 @@ const authMiddleware = async (req,res,next) => {
 
         if(!dataToken._id){
             handleHttpError(res,"ERROR ID TOKEN",401);
+            return
         }
 
         next()
 
-        const user = userModel.findById(dataToken._id);
+        const user = await userModel.findById(dataToken._id);
+        
         req.user= user;
 
     }catch(e){

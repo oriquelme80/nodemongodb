@@ -8,6 +8,7 @@ const getItems = async (req,res) =>{
 
     try{
         const user=req.user;
+        console.log(req.user);
         const data = await tracksModel.find({});
         res.send({data,user});}
     catch(e){
@@ -19,11 +20,10 @@ const getItems = async (req,res) =>{
 /*OBTENER REGISTROS*/
 const getItem = async (req,res) =>{
     try{
-        const user=req.user;
         req = matchedData(req);
         const {id}=req;
         const data = await tracksModel.findById(id);
-        res.send({data,user});
+        res.send({data});
 
     }catch(e)
     {
